@@ -3,15 +3,38 @@
 		<title>pucpucInfo</title>
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<meta content="initial-scale=1.0" name="viewport" />
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		
 	</head>
 	<body>
-		<div class="embed-responsive embed-responsive-1by1" style="height:100vh">
-			<iframe src="https://razorin91.ddns.net:8443/pucpucInfo" width="100%" style="height:100vh"
-				height="100%" ></iframe>
+		<script type="text/javascript">
+			function UrlExists(url, cb){
+				jQuery.ajax({
+					url:      url,
+					dataType: 'text',
+					type:     'GET',
+					complete:  function(xhr){
+						if(typeof cb === 'function')
+						   cb.apply(this, [xhr.status]);
+					}
+				});
+			}
+
+			UrlExists('https://razorin91.ddns.net:8443/pu234cpucInfo', function(status) {
+				if(status === 200) {
+				} else if(status === 404) {
+					jQuery("#iframe-container").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord");
+				}else{
+				   jQuery("#iframe-container").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord");
+				}
+			});
+			</script>
+		<div class="embed-responsive embed-responsive-1by1" style="height:100vh" id="iframe-container">
+			<iframe src="https://razorin91.ddns.net:8443/pu234cpucInfo" width="100%" style="height:100vh"
+				height="100%" >Hold up, yo.</iframe>
 		</div>
 	</body>
 </html>
