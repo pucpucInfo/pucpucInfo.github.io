@@ -8,26 +8,26 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			function UrlExists(url, cb){
-				jQuery.ajax({
-					url:      url,
-					dataType: 'text',
-					type:     'GET',
-					complete:  function(xhr){
-						if(typeof cb === 'function')
-						   cb.apply(this, [xhr.status]);
-					}
-				});
-			}
+			//function UrlExists(url, cb){
+			//	jQuery.ajax({
+				//	url:      url,
+					//dataType: 'text',
+					//type:     'GET',
+					//complete:  function(xhr){
+//						if(typeof cb === 'function')
+	//					   cb.apply(this, [xhr.status]);
+		//			}
+			//	});
+			//}
 
-			UrlExists('https://razorin91.ddns.net:8443/pucpucInfo', function(status) {
-				if(status === 200) {
-				} else if(status === 404) {
-					jQuery("body").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord.");
-				}else{
-				   jQuery("body").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord.");
-				}
-			});
+			//UrlExists('https://razorin91.ddns.net:8443/pucpucInfo', function(status) {
+				//if(status === 200) {
+				//} else if(status === 404) {
+//					jQuery("body").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord.");
+				//}else{
+				   //jQuery("body").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord.");
+				//}
+			//});
 			</script>
 	</head>
 	<body>
