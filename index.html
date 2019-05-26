@@ -28,12 +28,50 @@
 				   //jQuery("body").html("Under maintanance. If you see this message for more than a couple minutes please contact IRushYou on the discord.");
 				//}
 			//});
+				var receiveMessage = function(message){
+					if(event.data.event_id === 'updateURL'){
+						var route = event.data.data.route;
+						var currentRoute = window.location.hash;
+						if(currentRoute){
+							currentRoute = currentRoute.split("#")[1];
+							if(currentRoute === route){
+								return;
+							}
+						}
+						
+						var url = window.location.pathname +'#' + route;
+						history.pushState(null, null, '#' + route);
+					}
+				};
+				
+				var urlChanged = function(change){
+					if(change.newURL !== change.oldURL){
+						updateIFrameURLHash();
+					}
+				};
+				
+				var updateIFrameURLHash = function(){
+					var hashURL = window.location.hash;
+					if(hashURL){
+						var iframe = jQuery("#app-iframe");
+						var iframeSrc = iframe.attr('src').split("#")[0];
+						iframeSrc = iframeSrc + hashURL;
+						iframe.get(0).contentWindow.location.replace(iframeSrc);
+					}
+				};
+				
+				jQuery(function(){
+					updateIFrameURLHash();
+					
+					window.addEventListener("message", receiveMessage, false);
+					window.addEventListener("hashchange", urlChanged, false);
+				});
 			</script>
 	</head>
 	<body>
 		
 		<div class="embed-responsive embed-responsive-1by1" style="height:100vh" id="iframe-container">
-			<iframe src="https://razorin91.ddns.net:8443/pucpucInfo" width="100%" style="height:100vh"
+			<iframe id="app-iframe" src="https://razorin91.ddns.net:8443/pucpucInfo" width="100%" style="height:100vh"
 				height="100%" ></iframe>
 		</div>
 	</body>
